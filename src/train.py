@@ -41,8 +41,8 @@ tf.app.flags.DEFINE_float('decay_rate',0.9,
                           """Learning rate decay base""")
 tf.app.flags.DEFINE_float('decay_steps',2**16,
                           """Learning rate decay exponent scale""")
-tf.app.flags.DEFINE_float('decay_staircase',False,
-                          """Staircase learning rate decay by integer division""")
+#tf.app.flags.DEFINE_float('decay_staircase',False,
+#                          """Staircase learning rate decay by integer division""")
 
 
 tf.app.flags.DEFINE_integer('max_num_steps', 2**21,
@@ -122,7 +122,7 @@ def _get_training(rnn_logits,label,sequence_length):
                 tf.train.get_global_step(),
                 FLAGS.decay_steps,
                 FLAGS.decay_rate,
-                staircase=FLAGS.decay_staircase,
+                staircase=False, #FLAGS.decay_staircase,
                 name='learning_rate')
 
             optimizer = tf.train.AdamOptimizer(
