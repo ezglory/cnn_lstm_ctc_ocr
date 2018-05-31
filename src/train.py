@@ -48,7 +48,7 @@ tf.app.flags.DEFINE_float('decay_steps',2**16,
 tf.app.flags.DEFINE_integer('max_num_steps', 2**21,
                             """Number of optimization steps to run""")
 
-tf.app.flags.DEFINE_string('train_device','/gpu:1',
+tf.app.flags.DEFINE_string('train_device','/gpu:',
                            """Device for training graph placement""")
 tf.app.flags.DEFINE_string('input_device','/gpu:0',
                            """Device for preprocess/batching graph placement""")
