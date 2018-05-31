@@ -117,7 +117,7 @@ def _get_checkpoint():
 def _get_init_trained():
     """Return init function to restore trained model from a given checkpoint"""
     saver_reader = tf.train.Saver(
-        tf.get_collection(tf.GraphKeys.GLOBAL_STEP) + 
+        #tf.get_collection(tf.GraphKeys.GLOBAL_STEP) + 
         tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES)
     )
     
@@ -166,7 +166,7 @@ def main(argv=None):
 
                     if not coord.should_stop():
                         step_vals = sess.run(step_ops)
-                        print step_vals
+                        print (step_vals)
                         summary_str = sess.run(summary_op)
                         summary_writer.add_summary(summary_str,step_vals[0])
                     else:
