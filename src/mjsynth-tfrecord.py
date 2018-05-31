@@ -75,12 +75,12 @@ def gen_data(input_base_dir, image_list_filename, output_filebase,
         out_filename = output_filebase+'-'+(shard_format % i)+'.tfrecord'
         if os.path.isfile(out_filename): # Don't recreate data if restarting
             continue
-        print str(i),'of',str(num_shards),'[',str(start),':',str(end),']',out_filename
+        print (str(i),'of',str(num_shards),'[',str(start),':',str(end),']',out_filename )
         gen_shard(sess, input_base_dir, image_filenames[start:end], out_filename)
     # Clean up writing last shard
     start = num_shards*images_per_shard
     out_filename = output_filebase+'-'+(shard_format % num_shards)+'.tfrecord'
-    print str(i),'of',str(num_shards),'[',str(start),':]',out_filename
+    print (str(i),'of',str(num_shards),'[',str(start),':]',out_filename)
     gen_shard(sess, input_base_dir, image_filenames[start:], out_filename)
 
     sess.close()
@@ -177,6 +177,8 @@ def main(argv=None):
     gen_data('../data/images', 'annotation_train.txt', '../data/train/words')
     gen_data('../data/images', 'annotation_val.txt',   '../data/val/words')
     gen_data('../data/images', 'annotation_test.txt',  '../data/test/words')
+
+
 
 if __name__ == '__main__':
     main()
